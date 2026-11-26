@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block contenido %}
+<h2>{{ titulo }}</h2>
+{% for e in errores %}<p class="error mensaje-error">{{ e }}</p>{% endfor %}
+<form method="post" id="form-producto" novalidate>
+  <label>Nombre <input type="text" id="nombre" name="nombre" value="{{ producto['nombre'] if producto else '' }}"></label>
+  <label>Precio <input type="text" id="precio" name="precio" value="{{ producto['precio'] if producto else '' }}"></label>
+  <label>Stock <input type="text" id="stock" name="stock" value="{{ producto['stock'] if producto else '' }}"></label>
+  <button type="submit" id="btn-guardar">Guardar</button>
+  <a href="/productos">Cancelar</a>
+</form>
+{% endblock %}
