@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block contenido %}
+<h2>Productos</h2>
+<p><a id="btn-nuevo" class="btn" href="/productos/nuevo">Nuevo producto</a></p>
+<table id="tabla-productos">
+  <thead><tr><th>Nombre</th><th>Precio</th><th>Stock</th><th>Acciones</th></tr></thead>
+  <tbody>
+  {% for p in productos %}
+    <tr>
+      <td class="col-nombre">{{ p['nombre'] }}</td>
+      <td class="col-precio">{{ '%.2f'|format(p['precio']) }}</td>
+      <td class="col-stock">{{ p['stock'] }}</td>
+      <td>
+        <a class="btn-editar" href="/productos/{{ p['id'] }}/editar">Editar</a>
+        <form method="post" action="/productos/{{ p['id'] }}/eliminar" style="display:inline"
+              onsubmit="return confirm('Eliminar este producto?');">
+          <button type="submit" class="btn-eliminar">Eliminar</button>
+        </form>
+      </td>
+    </tr>
+  {% else %}
+    <tr id="fila-vacia"><td colspan="4">No hay productos registrados.</td></tr>
+  {% endfor %}
+  </tbody>
+</table>
+{% endblock %}
