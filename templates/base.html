@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Inventario</title>
+  <style>
+    body { font-family: Calibri, Arial, sans-serif; max-width: 760px; margin: 30px auto; padding: 0 16px; }
+    table { border-collapse: collapse; width: 100%; }
+    th, td { border: 1px solid #ccc; padding: 6px 10px; text-align: left; }
+    .error { color: #b00020; } .ok { color: #1b5e20; }
+    label { display: block; margin-top: 10px; } input { padding: 6px; width: 280px; }
+    button, .btn { margin-top: 12px; padding: 6px 14px; }
+  </style>
+</head>
+<body>
+  <h1>Inventario de productos</h1>
+  {% if session.get('usuario') %}<p><a id="enlace-salir" href="/logout">Cerrar sesion</a></p>{% endif %}
+  {% with mensajes = get_flashed_messages() %}
+    {% for m in mensajes %}<p id="mensaje-ok" class="ok">{{ m }}</p>{% endfor %}
+  {% endwith %}
+  {% block contenido %}{% endblock %}
+</body>
+</html>
