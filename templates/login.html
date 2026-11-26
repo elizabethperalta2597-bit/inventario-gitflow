@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block contenido %}
+<h2>Iniciar sesion</h2>
+{% if error %}<p id="mensaje-error" class="error">{{ error }}</p>{% endif %}
+<form method="post" id="form-login">
+  <label>Usuario <input type="text" id="usuario" name="usuario"></label>
+  <label>Contrasena <input type="password" id="clave" name="clave"></label>
+  <button type="submit" id="btn-login">Entrar</button>
+</form>
+{% endblock %}
